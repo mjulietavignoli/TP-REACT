@@ -1,6 +1,6 @@
 body{
-  background-color: rgb(240, 228, 215);
-  color:#000;
-  padding:1rem;
-  min-height: 100vh;
+  background-color: rgb(240, 228, 215) !important;
+  color:#000 !important;
+  padding:1rem !important;
+  min-height: 100vh !important;
 }
