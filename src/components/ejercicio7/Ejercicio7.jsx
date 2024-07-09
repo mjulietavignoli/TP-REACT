@@ -1,3 +1,4 @@
+
 import Card from "./Card.jsx";
 
 const Ejercicio7 = () => {
