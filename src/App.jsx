@@ -5,6 +5,7 @@ import  Ejercicio3  from './components/ejercicio3/Ejercicio3';
 import  Ejercicio4  from './components/ejercicio4/Ejercicio4';
 import  Ejercicio5  from './components/ejercicio5/Ejercicio5';
 import  Ejercicio7  from './components/ejercicio7/Ejercicio7';
+import  Ejercicio8  from './components/ejercicio8/Ejercicio8';
 
 const App = () => {
   return (
@@ -15,7 +16,8 @@ const App = () => {
     {/*<Ejercicio3 titulo="my friend"/>*/}
     {/*<Ejercicio4/>*/}
     {/*<Ejercicio5/>*/}
-    {<Ejercicio7/>}
+    {/*<Ejercicio7/>*/}
+    {<Ejercicio8/>} 
     </>
   )
 }
