@@ -25,9 +25,7 @@ const Ejercicio8 = (props) => {
       !validateName($inputApellido.current) ||
       !validateEmail($inputEmail.current) ||
       !validateNumber($inputDni.current)
-    ){
-      alert('Completar todos los datos')
-    } else {
+    ) {
       return;
     }
     
