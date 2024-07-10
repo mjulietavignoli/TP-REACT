@@ -1,16 +1,32 @@
-import { useState, useRef } from "react";
+import { useRef } from "react";
+import PropTypes from 'prop-types';
+import {Tarea} from './Tarea.js'
 
-const Ejercicio5 = () => {
-    const [tareas, setTareas] = useState([]);
+const Ejercicio5 = (props) => {
+    const {tareas, setTareas} = props;
   
     const $input = useRef();
   
     const handleNuevaTarea = () => {
-      const nuevaTarea = $input.current.value;
-      if (nuevaTarea.trim()) {
-        const nuevoArreglo = [...tareas, nuevaTarea];
-        setTareas(nuevoArreglo);
-        $input.current.value = "";
+      let tarea = $input.current.value;
+      if (tarea.trim()) {
+        let tareaExistente = false;
+        for (let i = 0; i < tareas.length; i++) {
+          if (tareas[i].nombre === tarea) {
+            tareaExistente = true;
+            break;
+          }
+        }
+        
+        if (!tareaExistente) {
+          tarea=tarea.toUpperCase();
+          const nuevaTarea = new Tarea(tarea);
+          const nuevoArreglo = [...tareas, nuevaTarea];
+          setTareas(nuevoArreglo);
+          $input.current.value = "";
+        } else {
+          alert("La tarea ya existe");
+        }
       }
     };
   
@@ -40,18 +56,22 @@ const Ejercicio5 = () => {
             />
           </div>
           <ul className="list-group">
-            {tareas.map((tarea, index) => (
-              <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
-                {tarea}
-                <button onClick={() => handleEliminarTarea(index)} className="btn btn-danger btn-sm">
-                  X
-                </button>
-              </li>
-            ))}
-          </ul>
+          {tareas.map((tarea, index) => (
+            <li key={tarea.codigo} className="list-group-item d-flex justify-content-between align-items-center">
+              {tarea.nombre}
+              <button onClick={() => handleEliminarTarea(index)} className="btn btn-danger btn-sm">
+                X
+              </button>
+            </li>
+          ))}
+        </ul>
         </div>
       </section>
     );
 }
 
 export default Ejercicio5;
+Ejercicio5.propTypes ={
+  tareas: PropTypes.array.isRequired,
+  setTareas: PropTypes.func.isRequired,
+}
