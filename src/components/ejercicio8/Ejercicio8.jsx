@@ -40,6 +40,10 @@ const Ejercicio8 = (props) => {
   setContactos(nuevaLista);
   alert('Datos enviados');
   e.target.reset();
+  $inputNombre.current.classList.remove('is-valid');
+  $inputApellido.current.classList.remove('is-valid');
+  $inputEmail.current.classList.remove('is-valid');
+  $inputDni.current.classList.remove('is-valid');
   };
 
  
