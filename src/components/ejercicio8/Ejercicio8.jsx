@@ -39,6 +39,7 @@ const Ejercicio8 = (props) => {
   const nuevaLista = [...contactos, nuevoContacto];
   setContactos(nuevaLista);
   alert('Datos enviados');
+  e.target.reset();
   };
 
  
