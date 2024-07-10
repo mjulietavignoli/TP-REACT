@@ -2,7 +2,8 @@ import PropTypes from "prop-types";
 import './ejercicio7.css';
 
 const Card = ({ empleado }) => {
-  const { id, fullName, title, department, pic } = empleado;
+  const { fullName, title, department, pic } = empleado;
+
   return (
     <div className="card w-100">
       <div className="row no-gutters">

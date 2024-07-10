@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+
 import Card from "./Card.jsx";
 
 const Ejercicio7 = () => {

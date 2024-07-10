@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import PropTypes from 'prop-types';
 import {
   validateEmail,
   validateName,
@@ -7,11 +8,15 @@ import {
 
 import {Contacto} from "./Contacto.js"
 
-const Ejercicio8 = () => {
+const Ejercicio8 = (props) => {
+  const {contactos, setContactos}=props;
+
+
   const $inputNombre = useRef();
   const $inputApellido = useRef();
   const $inputDni = useRef();
   const $inputEmail = useRef();
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,14 +28,23 @@ const Ejercicio8 = () => {
     ) {
       return;
     }
-  };
-
+    
   const nombre = $inputNombre.current.value;
   const apellido = $inputApellido.current.value;
   const dni = $inputDni.current.value;
   const email = $inputEmail.current.value;
 
   const nuevoContacto = new Contacto(nombre, apellido, dni, email);
+
+  const nuevaLista = [...contactos, nuevoContacto];
+  setContactos(nuevaLista);
+  alert('Datos enviados');
+  e.target.reset();
+  };
+
+ 
+
+
 
   return (
     <form form className="bg-white p-3 rounded-3" onSubmit={handleSubmit}>
@@ -121,3 +135,8 @@ const Ejercicio8 = () => {
 };
 
 export default Ejercicio8;
+
+Ejercicio8.propTypes ={
+  contactos: PropTypes.array.isRequired,
+  setContactos: PropTypes.func.isRequired,
+}

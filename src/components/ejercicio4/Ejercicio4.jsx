@@ -6,11 +6,16 @@ const Ejercicio4 = () => {
   const $input = useRef();
 
   const handleNuevaTarea = () => {
-    const nuevaTarea = $input.current.value;
-    if (nuevaTarea.trim()) {
-      const nuevoArreglo = [...tareas, nuevaTarea];
-      setTareas(nuevoArreglo);
-      $input.current.value = "";
+    let nuevaTarea = $input.current.value.trim();
+    if (nuevaTarea) {
+      nuevaTarea = nuevaTarea.toUpperCase();
+      if (!tareas.includes(nuevaTarea)) {
+        const nuevoArreglo = [...tareas, nuevaTarea];
+        setTareas(nuevoArreglo);
+        $input.current.value = "";
+      } else {
+        alert("La tarea ya existe en la lista.");
+      }
     }
   };
 
@@ -55,4 +60,3 @@ const Ejercicio4 = () => {
 };
 
 export default Ejercicio4;
-
