@@ -6,6 +6,7 @@ import Ejercicio2View from '../views/Ejercicio2View.jsx';
 import Ejercicio3View from '../views/Ejercicio3View.jsx';
 import Ejercicio4View from '../views/Ejercicio4View.jsx';
 import Ejercicio5View from '../views/Ejercicio5View.jsx';
+import Ejercicio6View from '../views/Ejercicio6View.jsx';
 import Ejercicio7View from '../views/Ejercicio7View.jsx';
 import Ejercicio8View from '../views/Ejercicio8View.jsx';
 import Ejercicio10View from '../views/Ejercicio10View.jsx';
@@ -31,9 +32,14 @@ export const router = createBrowserRouter([
         path: 'ejercicio4',
         element: <Ejercicio4View />,
       },
+      
       {
         path: 'ejercicio5',
         element: <Ejercicio5View />,
+      },
+      {
+        path: 'ejercicio6',
+        element: <Ejercicio6View />,
       },
       {
         path: 'ejercicio7',
