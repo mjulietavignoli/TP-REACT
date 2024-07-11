@@ -26,6 +26,9 @@ const Card = ({ empleado }) => {
   );
 };
 
+export default Card;
+
+
 Card.propTypes = {
   empleado: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -35,5 +38,3 @@ Card.propTypes = {
     pic: PropTypes.string.isRequired,
   }).isRequired,
 };
-
-export default Card;

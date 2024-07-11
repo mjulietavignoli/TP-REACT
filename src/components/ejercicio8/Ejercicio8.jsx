@@ -46,10 +46,6 @@ const Ejercicio8 = (props) => {
   $inputDni.current.classList.remove('is-valid');
   };
 
- 
-
-
-
   return (
     <form form className="bg-white p-3 rounded-3" onSubmit={handleSubmit}>
       <h2 className="text-center">FORMULARIO</h2>
