@@ -19,7 +19,7 @@ const Card = (props) => {
         if(res.isConfirmed){
             deleteColor(color.codigo);
             Swal.fire({
-                title: 'Contacto eliminado exitosamente',
+                title: 'Color eliminado exitosamente',
                 icon: 'success',
                 showCancelButton: false,
                 showConfirmButton: false,
