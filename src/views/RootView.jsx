@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
+import Header from '../components/header/Header';
 
 const RootView = () => {
   return (
     <>
-      <header></header>
+      <Header />
       <main className='container my-3'>
         <Outlet />
       </main>
