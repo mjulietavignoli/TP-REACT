@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import Formulario from "../components/ejercicio11/formulario/Formulario";
+
 const Ejercicio11View = () => {
   const [clima, setClima] = useState([]);
   const apiKey = '9781b4a6582306ca27f18057c81f2755';
@@ -11,6 +13,7 @@ const Ejercicio11View = () => {
       const res = await fetch(url);
       const data = await res.json();
       setClima(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -22,20 +25,13 @@ const Ejercicio11View = () => {
 
   return (
     <>
-      <h1>EJERCICIO 6</h1>
+      <h1>EJERCICIO 11</h1>
       <hr />
       <h2 className='text-center m-3'>Noticias</h2>
       <hr />
-      {clima.main ? (
-        <div>
-          <p>Temperatura: {clima.main.temp}°C</p>
-          <p>Descripción: {clima.weather[0].description}</p>
-          <p>Humedad: {clima.main.humidity}%</p>
-        </div>
-      ) : (
-        <p>Cargando datos del clima...</p>
-      )}
+      <Formulario clima={clima}/>
     </>
+      
   );
 };
 
