@@ -1,17 +1,18 @@
 import PropTypes from 'prop-types';
 
-const Formulario = ({clima}) => {
-  const ciudades = clima.name ? [clima.name] : [];
+const Formulario = ({ categorias, onCategoriaChange }) => {
+
+  const handleCategoriaChange = (event) => {
+    onCategoriaChange(event.target.value);
+  };
+
   return (
     <div>
       <label htmlFor="categoria-select">Buscar por categoría:</label>
-      <select
-        id="categoria-select"
-        value={clima.name}
-      >
+      <select id="categoria-select" onChange={handleCategoriaChange}>
         <option value="">Selecciona una categoría</option>
-        {ciudades.map((ciudad, index) => (
-          <option key={index} value={ciudad}>{ciudad}</option>
+        {categorias.map((categoria, index) => (
+          <option key={index} value={categoria}>{categoria}</option>
         ))}
       </select>
     </div>
@@ -20,6 +21,7 @@ const Formulario = ({clima}) => {
 
 export default Formulario;
 
-Formulario.propTypes ={
-  clima: PropTypes.array.isRequired,
-}
+Formulario.propTypes = {
+  categorias: PropTypes.array.isRequired,
+  onCategoriaChange: PropTypes.func.isRequired,
+};

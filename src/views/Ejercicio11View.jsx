@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
-
-import Formulario from "../components/ejercicio11/formulario/Formulario";
+import Formulario from '../components/ejercicio11/formulario/Formulario';
+import ContenedorCard from '../components/ejercicio11/card/ContenedorCard';
 
 const Ejercicio11View = () => {
-  const [clima, setClima] = useState([]);
-  const apiKey = '9781b4a6582306ca27f18057c81f2755';
-  const city = 'Madrid';
-  const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&lang=es&units=metric`;
+  const [noticias, setNoticias] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
 
-  const fetchClima = async () => {
+  const fetchNoticia = async () => {
+    const apiKey = 'pub_485640d76bd6042d0826d127b5238d7cabf5d';
+    const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&country=us`;
     try {
       const res = await fetch(url);
       const data = await res.json();
-      setClima(data);
+      setNoticias(data.results || []);
+
+      const uniqueCategories = [
+        ...new Set(data.results.map(noticia => noticia.category).flat())
+      ];
+      setCategorias(uniqueCategories);
+
       console.log(data);
     } catch (error) {
       console.log(error);
@@ -20,8 +27,8 @@ const Ejercicio11View = () => {
   };
 
   useEffect(() => {
-    fetchClima();
-  }, []); 
+    fetchNoticia();
+  }, []);
 
   return (
     <>
@@ -29,9 +36,15 @@ const Ejercicio11View = () => {
       <hr />
       <h2 className='text-center m-3'>Noticias</h2>
       <hr />
-      <Formulario clima={clima}/>
+      <Formulario
+        categorias={categorias}
+        onCategoriaChange={(categoria) => setCategoriaSeleccionada(categoria)}
+      />
+      <ContenedorCard
+        noticias={noticias}
+        categoriaSeleccionada={categoriaSeleccionada}
+      />
     </>
-      
   );
 };
 
