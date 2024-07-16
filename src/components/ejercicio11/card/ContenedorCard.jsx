@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Card from './Card';
+import LoadingNoticias from './LoadingNoticias';
 
 const ContenedorCard = ({ noticias, categoriaSeleccionada }) => {
   const noticiasFiltradas = noticias.filter(noticia => 
@@ -8,16 +9,15 @@ const ContenedorCard = ({ noticias, categoriaSeleccionada }) => {
 
   return (
     <div className='contenedor-cards'>
-        <div className='row' >
+        <div className='row g-2'>
             {noticiasFiltradas.length > 0 ? (
             noticiasFiltradas.map((noticia) => (
             <Card key={noticia.article_id} noticia={noticia}/> 
             ))
         ) : (
-            <p>No hay noticias disponibles para esta categoría.</p>
+            <LoadingNoticias />
         )}
         </div>
-      
     </div>
   );
 };

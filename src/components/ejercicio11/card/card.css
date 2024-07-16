@@ -1,5 +1,14 @@
 .img-size{
-    height: 400px;
+    height: 250px;
     width: 100%;
     object-fit: cover;
+}
+
+.placeholder-size{
+    height: 350px;
+}
+
+.card-size{
+    min-height: 600px;
+    height: 100%;
 }

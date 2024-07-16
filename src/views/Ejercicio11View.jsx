@@ -2,14 +2,15 @@ import { useEffect, useState } from "react";
 import Formulario from '../components/ejercicio11/formulario/Formulario';
 import ContenedorCard from '../components/ejercicio11/card/ContenedorCard';
 
+const API_KEY = import.meta.env.VITE_API_KEY;
+
 const Ejercicio11View = () => {
   const [noticias, setNoticias] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('');
 
   const fetchNoticia = async () => {
-    const apiKey = 'pub_485640d76bd6042d0826d127b5238d7cabf5d';
-    const url = `https://newsdata.io/api/1/news?apikey=${apiKey}&country=us`;
+    const url = `https://newsdata.io/api/1/news?apikey=${API_KEY}&country=us`;
     try {
       const res = await fetch(url);
       const data = await res.json();
