@@ -12,6 +12,7 @@ import Ejercicio8View from '../views/Ejercicio8View.jsx';
 import Ejercicio9View from '../views/Ejercicio9View.jsx';
 import Ejercicio10View from '../views/Ejercicio10View.jsx';
 import Ejercicio11View from '../views/Ejercicio11View.jsx';
+import Ejercicio12View from '../views/Ejercicio12View.jsx';
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ export const router = createBrowserRouter([
       {
         path: 'ejercicio11',
         element: <Ejercicio11View />,
+      },
+      {
+        path: 'ejercicio12',
+        element: <Ejercicio12View />,
       },
     ],
   },
