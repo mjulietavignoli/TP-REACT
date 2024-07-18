@@ -1,26 +1,32 @@
 import { useState } from 'react';
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 
 import Formulario from "../components/ejercicio13/Formulario";
 import Card from "../components/ejercicio13/Card";
 import LoadingClima from '../components/ejercicio13/LoadingClima';
 
-import { getClimaFn, API_KEY_CLIMA } from '../api/clima';
+import { getClimaFn, findClimaFn } from '../api/clima';
 
 const Ejercicio13View = () => {
   const [pais, setPais] = useState('');
   const [ciudad, setCiudad] = useState('');
-  const [url, setUrl] = useState('');
+  const [clima, setClima] = useState(null);
 
-  const { data: clima, isLoading, isError, isSuccess, refetch } = useQuery({
-    queryKey: ["clima", url],
+  const { data: climaInicial, isLoading, isError } = useQuery({
+    queryKey: ["climaInicial"],
     queryFn: getClimaFn,
-    enabled: false,
+  });
+
+  const { mutate: findClima } = useMutation({
+    mutationFn: findClimaFn,
+    onSuccess: (data) => {
+      setClima(data);
+      console.log(data);
+    },
   });
 
   const handleConsultar = () => {
-    setUrl(`https://api.openweathermap.org/data/2.5/weather?q=${ciudad},${pais}&appid=${API_KEY_CLIMA}`);
-    refetch();
+    findClima({ ciudad, pais });
   };
 
   return (
@@ -32,7 +38,7 @@ const Ejercicio13View = () => {
       />
       {isLoading && <LoadingClima />}
       {isError && <p>Ha ocurrido un error</p>}
-      {isSuccess && (
+      {clima && (
         <Card
           ciudad={ciudad}
           pais={pais}

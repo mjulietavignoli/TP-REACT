@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
 const Card = ({ciudad, pais, clima}) => {
+  
   return (
     <div className="card mt-3">
       <div className="card-body">
