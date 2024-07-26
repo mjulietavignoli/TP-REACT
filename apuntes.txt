@@ -1,0 +1,22 @@
+Empiezo con npm create vite, nombre de la carpeta, REACT, JAVASCRIPT + SWC
+
+npm i para instalar node modules
+
+Borramos carpeta assets, App.css, App.jsx, vaciamos index.css
+
+Copio esto en .eslintrc.cjs
+
+Agrego los meta al index.html
+
+git init para inicializar el repositorio
+
+Instalo librerias: npm i react-hook-form sweetalert2 sonner bootstrap react-router-dom prop-types
+Por aparte instalo: npm i -D json-server
+
+Creo las rutas
+
+Con el : hago que las rutas sean dinámicas
+ {
+            path:'detail/:id',
+            element:<p>Hola</p>,
+},
