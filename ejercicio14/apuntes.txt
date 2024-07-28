@@ -51,4 +51,30 @@ Con el : hago que las rutas sean dinámicas
             element:<p>Hola</p>,
 },
 
+
+
+
+Teoría
 Zustand es una librería que nos permite manejar el estado global
+
+form-floating para hacer que un input "suba" el label  cuando se presione el input (!!!! de haberlo sabido antes)
+
+React hook form no puede importarse como una librería ni nada sino que hay enviar como prop register y dsp utilizarlo (en el Input.jsx está)
+
+<form onSubmit={onSubmitRHF(handleSubmit)}>, se pone antes el onSubmitRHF para que valide todo antes de enviar la data
+
+mui es una librería que viene con los componentes ya creados. React bootstrap es bootstrap pero en componentes (es un elemento con las clases ya aplicadas, personalizar es un lío), si quiero librerías donde no esté agregados los estilos y me den herramientas como accesibilidad, por ejemplo, puedo usar: ui.shadcn, headlessui (nos brinda el comportamiento pero los estilos le tengo que dar yo)
+
+Puedo crear un draft pull request que es algo que en algun momento voy a terminar de hacer pero no quiero que sea mergeado ya mismo, si alguien más lo ve, no le va a aparecer. Se puede ver pero no mergear. Es como ir armando el pull request de a poco
+-[X] es para hacer como una tarea completada en github, -[] es una tarea no completada
+
+Para hacer funcionar json server necesitamos 3 cosas:
+1. Instalar la dependencia
+2. Crear el archivo db.json
+3. Ejecutarlo utilizando "server": "json-server --watch db.json" (en package.json)
+
+Query: debe hacerse de inmediato cuando carga la página
+Mutación: debe realizarse cuando el usuario interactúa con algún botón, etc.
+
+el useNavigate nos permite navegar hacia una página pero sin tener que hacerle click a un botón 
+
