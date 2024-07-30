@@ -1,29 +1,88 @@
+import React, { useRef } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { useSession } from '../../stores/useSession';
+import Swal from 'sweetalert2';
 
 const Header = () => {
-  return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="">
-            <Link className="navbar-brand" to="/">MI COCINITA</Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav w-100">
-                    <li className="nav-item">
-                        <NavLink className={({isActive})=>{return isActive ? 'nav-link active' : 'nav-link';}} to="/">Inicio</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className={({isActive})=>{return isActive ? 'nav-link active' : 'nav-link';}} to="/login">Iniciar sesión</NavLink>
-                    </li>
-                    <li className="nav-item">
-                        <NavLink className={({isActive})=>{return isActive ? 'nav-link active' : 'nav-link';}} to="/admin">Admin</NavLink>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-  )
-}
+  const { user, isLoggedIn, logout } = useSession();
 
-export default Header
+  const handleLogout = async () => {
+    const action = await Swal.fire({
+      icon: 'question',
+      title: 'Atención',
+      text: '¿Está seguro que desea cerrar sesion?',
+      confirmButtonText: 'Si, salir',
+      cancelButtonText: 'No, cancelar',
+      showCancelButton: true,
+    });
+
+    if (action.isConfirmed) {
+      logout();
+    }
+  };
+
+  return (
+    <nav className='navbar navbar-expand-lg bg-body-tertiary'>
+      <div className='container'>
+        <Link className='navbar-brand' to='/'>
+          Mi cocinita
+        </Link>
+        <button
+          aria-controls='navbarNav'
+          aria-expanded='false'
+          aria-label='Toggle navigation'
+          className='navbar-toggler'
+          data-bs-target='#navbarNav'
+          data-bs-toggle='collapse'
+          type='button'
+        >
+          <span className='navbar-toggler-icon'></span>
+        </button>
+        <div className='collapse navbar-collapse' id='navbarNav'>
+          <ul className='navbar-nav'>
+            <li className='nav-item'>
+              <NavLink
+                className={({ isActive }) => {
+                  return isActive ? 'nav-link active' : 'nav-link';
+                }}
+                to='/'
+              >
+                Inicio
+              </NavLink>
+            </li>
+            {!isLoggedIn && (
+              <li className='nav-item'>
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? 'nav-link active' : 'nav-link';
+                  }}
+                  to='/login'
+                >
+                  Iniciar Sesión
+                </NavLink>
+              </li>
+            )}
+            {isLoggedIn && user.isAdmin && (
+              <li className='nav-item'>
+                <NavLink
+                  className={({ isActive }) => {
+                    return isActive ? 'nav-link active' : 'nav-link';
+                  }}
+                  to='/admin'
+                >
+                  Admin
+                </NavLink>
+              </li>
+            )}
+            {isLoggedIn && (
+              <button className='btn btn-danger' onClick={handleLogout}>
+                Cerrar sesión
+              </button>
+            )}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
+export default Header;

@@ -1,14 +1,14 @@
 .img-size{
-    height: 250px;
-    width: 100%;
-    object-fit: cover;
+    height: 250px !important;
+    width: 100% !important;
+    object-fit: cover !important;
 }
 
 .placeholder-size{
-    height: 350px;
+    height: 350px !important;
 }
 
 .card-size{
-    min-height: 600px;
-    height: 100%;
+    min-height: 600px !important;
+    height: 100% !important;
 }

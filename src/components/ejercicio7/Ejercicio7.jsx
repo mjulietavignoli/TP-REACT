@@ -1,4 +1,4 @@
-
+import './ejercicio7.css';
 import Card from "./Card.jsx";
 
 const Ejercicio7 = () => {
@@ -16,9 +16,9 @@ const Ejercicio7 = () => {
   return (
       <>
       <h1 className="text-center">Lista de empleados</h1>
-      <ul>
+      <ul className="list-unstyled">
           {empleados.map((empleado) => (
-            <li key={empleado.id} className="d-flex justify-content-between align-items-center pb-4">
+            <li key={empleado.id} className="pb-1 ">
              <Card empleado={empleado} />
             </li>
           ))}

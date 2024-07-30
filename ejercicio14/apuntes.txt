@@ -66,7 +66,8 @@ React hook form no puede importarse como una librería ni nada sino que hay envi
 mui es una librería que viene con los componentes ya creados. React bootstrap es bootstrap pero en componentes (es un elemento con las clases ya aplicadas, personalizar es un lío), si quiero librerías donde no esté agregados los estilos y me den herramientas como accesibilidad, por ejemplo, puedo usar: ui.shadcn, headlessui (nos brinda el comportamiento pero los estilos le tengo que dar yo)
 
 Puedo crear un draft pull request que es algo que en algun momento voy a terminar de hacer pero no quiero que sea mergeado ya mismo, si alguien más lo ve, no le va a aparecer. Se puede ver pero no mergear. Es como ir armando el pull request de a poco
--[X] es para hacer como una tarea completada en github, -[] es una tarea no completada
+-[X] es para hacer como una tarea completada en github, -[] es una tarea no completada.
+Una vez que completo todo, con Ready for Review lo dejo ya listo para mergear
 
 Para hacer funcionar json server necesitamos 3 cosas:
 1. Instalar la dependencia
@@ -77,4 +78,35 @@ Query: debe hacerse de inmediato cuando carga la página
 Mutación: debe realizarse cuando el usuario interactúa con algún botón, etc.
 
 el useNavigate nos permite navegar hacia una página pero sin tener que hacerle click a un botón 
+
+Para poner un regex basta con empezar y terminar con esta barra /
+
+¡Cuando un usuario se registra, ya inmediatamente está logueado! No debería tener que ir a logearse de nuevo
+
+Para que el componente vuelva a renderizarse con la información nueva (es como que se lo invalida): 
+ queryClient.invalidateQueries({
+        queryKey: ['blogs'],
+      });
+
+Aquí utilizamos una query porque la tabla tiene que estar cargada sin que el usuario haga nada:
+const AdminTable = () => {
+  const {
+    data: blogs,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ['blogs'],
+    queryFn: getBlogsFn,
+  });
+
+Para devolver un objeto puedo hacer con return o envolver {} en esto ()
+
+Un hook si o si debe estar llamado en un primer nivel (componente), no puede llamarse dentro de una función creada por mí, por ejemplo
+
+Un parametro es algo que va a variar en la URL
+
+React Router Dam me da un hook que se llama useParams para traer los params de la URL
+
+Para deployar:
+Comando npm run build que me genera una carpeta que es la que realmente se deploya
 

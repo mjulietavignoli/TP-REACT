@@ -1,0 +1,6 @@
+.admin-table-image {
+    width: 200px !important;
+    height: 100px !important;
+    border-radius: 15px !important;
+    object-fit: cover !important;
+  }

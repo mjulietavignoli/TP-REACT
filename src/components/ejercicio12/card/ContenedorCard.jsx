@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Card from './Card';
 import LoadingNoticias from './LoadingNoticias';
+import './card.css';
 
 const ContenedorCard = ({ noticias, categoriaSeleccionada, paisSeleccionado }) => {
   const noticiasFiltradas = noticias.filter(noticia => 

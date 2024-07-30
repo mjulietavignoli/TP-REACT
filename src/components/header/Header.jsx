@@ -52,9 +52,6 @@ const Header = () => {
                     <li className="nav-item">
                         <NavLink className={({isActive})=>{return isActive ? 'nav-link active' : 'nav-link';}} to="/ejercicio13">Ejercicio 13</NavLink>
                     </li>
-                    <li className="nav-item">
-                        <NavLink className={({isActive})=>{return isActive ? 'nav-link active' : 'nav-link';}} to="/ejercicio14">Ejercicio 14</NavLink>
-                    </li>
                 </ul>
             </div>
         </div>
