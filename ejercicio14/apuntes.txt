@@ -1,0 +1,112 @@
+Empiezo con npm create vite, nombre de la carpeta, REACT, JAVASCRIPT + SWC
+
+npm i para instalar node modules
+
+Borramos carpeta assets, App.css, App.jsx, vaciamos index.css
+
+Copio esto en .eslintrc.cjs:
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+    // 'plugin:@tanstack/eslint-plugin-query/recommended',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh'],
+  rules: {
+    'react/jsx-no-target-blank': 'off',
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'react/jsx-sort-props': [
+      1,
+      {
+        shorthandFirst: true,
+        callbacksLast: true,
+      },
+    ],
+    // 'react/prop-types': 'off',
+  },
+};
+
+Agrego los meta al index.html
+
+git init para inicializar el repositorio
+
+Instalo librerias: npm i react-hook-form sweetalert2 sonner bootstrap react-router-dom prop-types
+Por aparte instalo: npm i -D json-server
+
+Creo las rutas
+
+Con el : hago que las rutas sean dinámicas
+ {
+            path:'detail/:id',
+            element:<p>Hola</p>,
+},
+
+
+
+
+Teoría
+Zustand es una librería que nos permite manejar el estado global
+
+form-floating para hacer que un input "suba" el label  cuando se presione el input (!!!! de haberlo sabido antes)
+
+React hook form no puede importarse como una librería ni nada sino que hay enviar como prop register y dsp utilizarlo (en el Input.jsx está)
+
+<form onSubmit={onSubmitRHF(handleSubmit)}>, se pone antes el onSubmitRHF para que valide todo antes de enviar la data
+
+mui es una librería que viene con los componentes ya creados. React bootstrap es bootstrap pero en componentes (es un elemento con las clases ya aplicadas, personalizar es un lío), si quiero librerías donde no esté agregados los estilos y me den herramientas como accesibilidad, por ejemplo, puedo usar: ui.shadcn, headlessui (nos brinda el comportamiento pero los estilos le tengo que dar yo)
+
+Puedo crear un draft pull request que es algo que en algun momento voy a terminar de hacer pero no quiero que sea mergeado ya mismo, si alguien más lo ve, no le va a aparecer. Se puede ver pero no mergear. Es como ir armando el pull request de a poco
+-[X] es para hacer como una tarea completada en github, -[] es una tarea no completada.
+Una vez que completo todo, con Ready for Review lo dejo ya listo para mergear
+
+Para hacer funcionar json server necesitamos 3 cosas:
+1. Instalar la dependencia
+2. Crear el archivo db.json
+3. Ejecutarlo utilizando "server": "json-server --watch db.json" (en package.json)
+
+Query: debe hacerse de inmediato cuando carga la página
+Mutación: debe realizarse cuando el usuario interactúa con algún botón, etc.
+
+el useNavigate nos permite navegar hacia una página pero sin tener que hacerle click a un botón 
+
+Para poner un regex basta con empezar y terminar con esta barra /
+
+¡Cuando un usuario se registra, ya inmediatamente está logueado! No debería tener que ir a logearse de nuevo
+
+Para que el componente vuelva a renderizarse con la información nueva (es como que se lo invalida): 
+ queryClient.invalidateQueries({
+        queryKey: ['blogs'],
+      });
+
+Aquí utilizamos una query porque la tabla tiene que estar cargada sin que el usuario haga nada:
+const AdminTable = () => {
+  const {
+    data: blogs,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ['blogs'],
+    queryFn: getBlogsFn,
+  });
+
+Para devolver un objeto puedo hacer con return o envolver {} en esto ()
+
+Un hook si o si debe estar llamado en un primer nivel (componente), no puede llamarse dentro de una función creada por mí, por ejemplo
+
+Un parametro es algo que va a variar en la URL
+
+React Router Dam me da un hook que se llama useParams para traer los params de la URL
+
+Para deployar:
+Comando npm run build que me genera una carpeta que es la que realmente se deploya
+

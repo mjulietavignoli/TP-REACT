@@ -1,0 +1,9 @@
+.placeholder-size{
+    height: 200px;
+    width: 100%;
+}
+
+.card-size{
+    min-height: 600px;
+    height: 100%;
+}

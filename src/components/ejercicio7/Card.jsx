@@ -7,8 +7,8 @@ const Card = ({ empleado }) => {
   return (
     <div className="card w-100">
       <div className="row no-gutters">
-        <div className="col-md-2 h-100 mx-0">
-          <img src={pic} className="card-img rounded-circle card-size w-75" alt={`${fullName}'s picture`} />
+        <div className="col-md-2 mx-0 contenedor-img">
+          <img src={pic} className="card-img rounded-circle img-size p-1" alt={`${fullName}'s picture`} />
         </div>
         <div className="col-md-10">
           <div className="card-body text-dark">
@@ -27,7 +27,6 @@ const Card = ({ empleado }) => {
 };
 
 export default Card;
-
 
 Card.propTypes = {
   empleado: PropTypes.shape({
