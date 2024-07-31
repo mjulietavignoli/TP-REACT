@@ -8,7 +8,7 @@ const Card = ({ empleado }) => {
     <div className="card w-100">
       <div className="row no-gutters">
         <div className="col-md-2 mx-0 contenedor-img">
-          <img src={pic} className="card-img rounded-circle img-size p-1" alt={`${fullName}'s picture`} />
+          <img src={pic} className="card-img rounded-circle h-100 p-1 img-fluid" alt={`${fullName}'s picture`} />
         </div>
         <div className="col-md-10">
           <div className="card-body text-dark">
